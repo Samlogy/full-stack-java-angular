@@ -1,0 +1,11 @@
+<p-button
+  (onClick)="deleteProduct($any($event))"
+  label="Delete"
+  severity="danger"
+  [outlined]="true"
+/>
+
+<div class="card flex justify-content-center gap-2">
+  <p-toast />
+  <p-confirmDialog />
+</div>

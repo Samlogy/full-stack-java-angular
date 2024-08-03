@@ -1,0 +1,33 @@
+<div class="card flex justify-content-center">
+  <h3>Filter</h3>
+  <input
+    type="text"
+    pInputText
+    [(ngModel)]="search.name"
+    name="name"
+    placeholder="Product Name"
+  />
+  <input
+    type="text"
+    pInputText
+    [(ngModel)]="search.priceMin"
+    name="priceMin"
+    placeholder="Product priceMin"
+  />
+  <input
+    type="text"
+    pInputText
+    [(ngModel)]="search.priceMax"
+    name="priceMax"
+    placeholder="Product priceMax"
+  />
+
+  <input
+    type="text"
+    pInputText
+    [(ngModel)]="search.category"
+    name="category"
+    placeholder="Product category"
+  />
+  <p-button (onClick)="filterProducts()" label="Search" />
+</div>
