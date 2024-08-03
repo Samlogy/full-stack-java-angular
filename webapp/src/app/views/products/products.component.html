@@ -1,0 +1,12 @@
+<h2>Products</h2>
+
+<app-edit-add-product [product]="product"></app-edit-add-product>
+<app-filter-product></app-filter-product>
+
+<div class="card flex justify-content-center align-items-center">
+  <app-product-card [products]="products"></app-product-card>
+  <app-pagination
+    [pageItems]="pageItems"
+    [totalItems]="totalItems"
+  ></app-pagination>
+</div>
