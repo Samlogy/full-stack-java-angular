@@ -27,7 +27,10 @@ public class Customer {
     @Column(name = "phone", nullable = false)
     private int phone;
 
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval=true)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    private List<Orderr> orders = new ArrayList<Orderr>();
+    @OneToOne(cascade = CascadeType.ALL) // => uni-directional relationship
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
+
+//    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL) => bi-directional relationship
+//    private Address address;
 }
