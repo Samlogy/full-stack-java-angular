@@ -1,16 +1,2 @@
-<div>
-  <h2>Fullstack OAuth2 Keycloak</h2>
-</div>
-<div>
-  <div>
-    <button (click)="getHelloAdmin()">GET HELLO Admin</button>
-    <button (click)="getHelloModerator()">GET HELLO Moderator</button>
-    <button (click)="getHelloBoth()">GET HELLO Both</button>
-  </div>
-  <div>
-    <button (click)="logout()">LOGOUT</button>
-  </div>
-</div>
-<div>
-  {{ helloText }}
-</div>
+<app-menu></app-menu>
+<router-outlet></router-outlet>

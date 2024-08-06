@@ -1,0 +1,87 @@
+<div class="card flex justify-content-center">
+  <p-button
+    (onClick)="visible = true"
+    [label]="product.name ? 'Edit' : 'Add'"
+  ></p-button>
+
+  <p-dialog
+    [header]="product.name ? 'Edit Product' : 'Add Product'"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '25em' }"
+    [formGroup]="productForm"
+  >
+    <div class="flex align-items-center gap-3 mb-3">
+      <label for="name" class="font-semibold w-6rem">Name</label>
+      <input
+        pInputText
+        id="name"
+        class="flex-auto"
+        autocomplete="off"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="card flex justify-content-center">
+      <p-toast />
+      <label for="image" class="font-semibold w-6rem">Image</label>
+      <p-fileUpload
+        mode="basic"
+        chooseLabel="Choose Image"
+        chooseIcon="pi pi-upload"
+        formControlName="image"
+        url="https://www.primefaces.org/cdn/api/upload.php"
+        accept="image/*"
+        maxFileSize="1000000"
+        (onUpload)="onUpload($any($event))"
+        id="image"
+      />
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+      <label for="quantity" class="font-semibold w-6rem">Quantity</label>
+      <input
+        pInputText
+        id="quantity"
+        class="flex-auto"
+        autocomplete="off"
+        formControlName="quantity"
+      />
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+      <label for="price" class="font-semibold w-6rem">Price</label>
+      <input
+        pInputText
+        id="price"
+        class="flex-auto"
+        autocomplete="off"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+      <label for="category" class="font-semibold w-6rem">Category</label>
+      <input
+        pInputText
+        id="category"
+        class="flex-auto"
+        autocomplete="off"
+        formControlName="category"
+      />
+    </div>
+
+    <div class="flex justify-content-end gap-2">
+      <p-button
+        label="Cancel"
+        severity="secondary"
+        (onClick)="visible = false"
+      />
+      <p-button
+        [label]="!product.name ? 'Add Product' : 'Edit Product'"
+        (onClick)="product.name ? editProduct(product.id) : addProduct()"
+        [disabled]="!productForm.valid"
+      />
+    </div>
+  </p-dialog>
+</div>

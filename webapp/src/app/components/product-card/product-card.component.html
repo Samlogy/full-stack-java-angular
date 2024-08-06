@@ -1,0 +1,33 @@
+@for (product of products; track products) {
+
+<p-card
+  header="{{ product.name }}"
+  subheader=""
+  [style]="{ width: '360px' }"
+  (click)="accessProductDetails(product.id)"
+>
+  <ng-template pTemplate="header">
+    <img alt="Card" src="{{ product.image }}" />
+  </ng-template>
+  <div>
+    <div>
+      <strong>Price:</strong>
+      <span>
+        {{ product.price }}
+      </span>
+    </div>
+    <div>
+      <strong>Quantity:</strong>
+      <span>
+        {{ product.quantity }}
+      </span>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Read More" class="w-full" styleClass="w-full" />
+  </ng-template>
+</p-card>
+
+} @empty {
+<div>No Products found...</div>
+}

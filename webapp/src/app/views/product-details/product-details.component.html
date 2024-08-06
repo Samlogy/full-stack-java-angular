@@ -1,0 +1,40 @@
+<div class="flex flex-direection-columns">
+  <img alt="Card" src="{{ product.image }}" />
+
+  <h2>{{ product.name }}</h2>
+
+  <div>
+    <div>
+      <strong>Product ID:</strong>
+      <span>
+        {{ product.id }}
+      </span>
+    </div>
+
+    <div>
+      <strong>Category:</strong>
+      <span>
+        {{ product.category }}
+      </span>
+    </div>
+
+    <div>
+      <strong>Price:</strong>
+      <span>
+        {{ product.price }}
+      </span>
+    </div>
+
+    <div>
+      <strong>Quantity:</strong>
+      <span>
+        {{ product.quantity }}
+      </span>
+    </div>
+  </div>
+
+  <div class="card flex justify-content-center">
+    <app-edit-add-product [product]="product"></app-edit-add-product>
+    <app-delete-product [productId]="product.id"></app-delete-product>
+  </div>
+</div>
