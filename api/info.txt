@@ -68,3 +68,36 @@ installer lombok plugins => intellij or eclipse, ...
 
 
 export JAVA_HOME=/usr/local/jdk-20.0.2
+
+
+## Deploying Java Spring App
+**Dockerize Spring app:**
+- check if spring api works:
+```bash
+mvn clean spring-boot:run
+curl -v localhost:8080/api/health
+```
+
+- add dockerfile
+
+- build spring api:
+`mvn install`
+
+- build / run docker container for spring api:
+```bash
+docker build -t spring-api:1.0 .
+docker run -p 8080:8080 spring-api:1.0 .
+```
+
+- test our spring api container:
+`curl -v localhost:8080/api/hello`
+
+**Pipeline:**
+using jenkins:
+- CI: checkout (github) => build => test => package => push (docker hub)
+- CD: pull (docker hub) => deploy aws
+
+**Jenkins**
+username: ss
+email:    senanisammy@gmail.com
+password: password
