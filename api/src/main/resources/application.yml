@@ -1,4 +1,4 @@
-app:
+app: # swagger api => documentation
   name: ecommerce_api
   version: 1.0.0
   openapi:
@@ -16,27 +16,23 @@ app:
       tryItOutEnabled: true
 
 spring:
-  jpa:
-    database: postgresql
-    show-sql: true
-    hibernate:
-      ddl-auto: create-drop #validate create-drop
-      naming:
-        strategy: org.hibernate.cfg.ImprovedNamingStrategy
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
+  port: 8080 # api port
 
-  profiles:
+  data: # database => MongoDB
+    mongodb:
+      database: db1
+      port: '27017'
+      host: localhost
+      mongodb.auto-index-creation: true
+      mongodb.uri: 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.15'
+
+
+  profiles: # Profiles Env
     active: int
 
-javamelody:
+javamelody: # Melody (monitoring)
   enabled: true
   excluded-datasources: secretSource,topSecretSource
   spring-monitoring-enabled: true
   init-parameters:
     log: false
-
-logging:
-  config: classpath:logback-spring.xml
