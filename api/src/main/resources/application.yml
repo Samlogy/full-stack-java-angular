@@ -37,3 +37,6 @@ javamelody:
   spring-monitoring-enabled: true
   init-parameters:
     log: false
+
+logging:
+  config: classpath:logback-spring.xml
