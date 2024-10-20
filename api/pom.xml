@@ -72,6 +72,16 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -83,12 +93,13 @@
 			<scope>test</scope>
 		</dependency>
 
-<!--		ELK-->
+        <!--		ELK-->
+		<!--
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
 			<artifactId>logstash-logback-encoder</artifactId>
 			<version>7.0.1</version>
-		</dependency>
+		</dependency>-->
 
 
 		<!-- Mockito -->

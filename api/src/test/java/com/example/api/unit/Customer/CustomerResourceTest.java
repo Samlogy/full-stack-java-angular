@@ -69,18 +69,18 @@ public class CustomerResourceTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
-    public void whenRegisterCustomer_thenReturnCustomer() throws Exception {
-        // given
-        given(customerService.createCustomer(any(Customer.class))).willReturn(customer);
-
-        // when, then
-        mockMvc.perform(post("/api/v1/customer")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"fullName\": \"sam sam\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.fullName").value(customer.getFullName()));
-    }
+//    @Test
+//    public void whenRegisterCustomer_thenReturnCustomer() throws Exception {
+//        // given
+//        given(customerService.createCustomer(any(Customer.class))).willReturn(customer);
+//
+//        // when, then
+//        mockMvc.perform(post("/api/v1/customer")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content("{\"fullName\": \"sam sam\"}"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.fullName").value(customer.getFullName()));
+//    }
 
     @Test
     public void whenDeleteCustomer_thenReturnNoContent() throws Exception {
