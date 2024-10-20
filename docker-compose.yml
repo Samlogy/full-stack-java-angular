@@ -1,5 +1,27 @@
-version: "3.9"
+
 services:
+  angular-app:
+      container_name: sammmmmm/angular-app:1.0
+      # image: sammmmmm/spring-app:1.0
+      build:
+        context: ./webapp
+      restart: always
+      ports:
+        - "8081:8080"
+      depends_on:
+        - postgres
+
+  spring-app:
+      container_name: sammmmmm/spring-app:1.0
+      # image: sammmmmm/spring-app:1.0
+      build:
+        context: ./api
+      restart: always
+      ports:
+        - "8081:8080"
+      depends_on:
+        - postgres
+
   postgres:
     container_name: db
     image: "postgres:14.4"
@@ -9,7 +31,6 @@ services:
       interval: 10s
       retries: 10
     volumes:
-      # change this to your local path
       - "postgres_data:/opt/data"
     environment:
       POSTGRES_USER: postgres
@@ -24,7 +45,7 @@ services:
   keycloak:
     container_name: keycloak
     build:
-      context: .
+      context: ./keycloak
       args:
         KEYCLOAK_VERSION: 22.0.0
     command: ['start', '--optimized', '--import-realm']
