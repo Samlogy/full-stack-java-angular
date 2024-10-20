@@ -1,8 +1,7 @@
 
 services:
   angular-app:
-      container_name: sammmmmm/angular-app:1.0
-      # image: sammmmmm/spring-app:1.0
+      container_name: sammmmmm/angular-app
       build:
         context: ./webapp
       restart: always
@@ -12,8 +11,7 @@ services:
         - postgres
 
   spring-app:
-      container_name: sammmmmm/spring-app:1.0
-      # image: sammmmmm/spring-app:1.0
+      container_name: sammmmmm/spring-app
       build:
         context: ./api
       restart: always
@@ -23,7 +21,7 @@ services:
         - postgres
 
   postgres:
-    container_name: db
+    container_name: postgres
     image: "postgres:14.4"
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
@@ -31,7 +29,7 @@ services:
       interval: 10s
       retries: 10
     volumes:
-      - "postgres_data:/opt/data"
+      - "./volumes/postgres_data:/opt/data"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -75,6 +73,3 @@ networks:
   local:
     name: local
     driver: bridge
-
-volumes:
-  postgres_data:
