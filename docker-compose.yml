@@ -1,17 +1,17 @@
 
 services:
   angular-app:
-      container_name: sammmmmm/angular-app
+      container_name: angular-app
       build:
         context: ./webapp
       restart: always
       ports:
-        - "8081:8080"
+        - "4201:80"
       depends_on:
         - postgres
 
   spring-app:
-      container_name: sammmmmm/spring-app
+      container_name: spring-app
       build:
         context: ./api
       restart: always

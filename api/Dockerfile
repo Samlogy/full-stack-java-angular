@@ -12,3 +12,4 @@ WORKDIR /opt/app
 EXPOSE 8081
 COPY --from=builder /opt/app/target/*.jar /opt/app/*.jar
 ENTRYPOINT ["java","-Dspring.profiles.active=int", "-jar", "/opt/app/*.jar" ]
+
