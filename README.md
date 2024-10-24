@@ -1,41 +1,98 @@
-# fullstack-oauth2-angular-spring-boot-keycloak
-An OAuth2 fullstack example with keycloak, angular and spring boot.
+# FS Java Angular Project
 
-## setup keycloak
-
-Go to `keycloak` folder, modify `Dockerfile` or `docker-compose.yml` (e.g. adjust the `postgres_data` volume) and start up postgres and keycloak via `docker compose up --build`.
-
-The file `my-test-realm-realm.json` is used to import a complete realm configuration, including clients, users, roles, etc... into keycloak. 
-
-Realm: `my-test-realm`, Username: `testuser-1`, Password: `testuser1`
-
-You may create and configure your own realm by using the keycloak admin console.
-
-Check if the keycloak admin console is reachable (`http://localhost:8180/`).
+## Tech stack
+- **Front**: angular
+- **Back**: java, spring, postgresql, hibernate, flyway.
+- **Auth**: Keycloak
+- **Monitoring**: prometheus & grafana
+- **Logging**: ELK
+- **Pipeline**: Jenkins
 
 
-## angular webapp
+## Getting started
 
-Angular webapp is in `webapp`. Made with angular 17.
+install java 21, maven 3.6.9+: 
+- 
 
-Using [angular-oauth2-oidc](https://www.npmjs.com/package/angular-oauth2-oidc)!
+```bash
 
-The `main.ts` file bootstraps the webapp by proving the http client and the oauthservice. Also initializing the oauthservice by providing a configuration, setup of silent token refresh, loading discovery document and login of user, if not already done.
+sudo apt install openjdk-21-jdk -y
+sudo apt install maven
 
-The component `AppComponent` provides a basic demo of logout and calling a protected API with the access token.
+java -version
+mvn -version
 
-## spring-boot backend
+sudo update-alternatives --config java
 
-Spring boot backend is in `backend` folder. Requires Maven and Java 21.
-
-The class `SecurityConfig` configures the security filter chain, enabling CORS, makes sure that all requests must be authenticated, configures to be an oauth2 resource server (verify access token via JWT issuer) and to use a custom JWT converter to extract all relevant data from the JWT.
-
-The `application.properties` file has the JWT issuer configured, pointing to the locally running keycloak.
-
-The `CustomJwt` is a customized JWT containing all relevant information we need extracted from the JWT bearer token.
-
-The `HelloController` has a basic GET endpoint, CORS is configured to work with a locally running angular webapp. The GET method returns a message, but only for authorized users which have the authority `ROLE_fullstack-developer`.
-
-The granted authorities are extracted by the `CustomJwtConverter`.
+```
+- configure java sdk, maven (restart project)
+- run main java file
 
 
+## Programme
+**voir Java + Spring / Angular code (structure fichier, code, ...).
+**essayer de comprendre ce qui a été fait dans le code (front + back).
+
+**** clean code, principes solid, design pattern ****
+**** Terraform, ansible, docker, keycloak, sonarqube, kubernetes ****
+**** Monitoring & Logging ****
+
+**implement keycloak oauth2.0 => java/angular full stack (authentification + authorisation).
+**dockerize app (front + back).
+**create a pipeline ci/cd => Jenkins.
+**provision & configure infrastructure => aws (terraform + ansible + aws).
+**manage a cluster in kubernetes.
+
+NB:
+voir les points clés de angular, java, spring => theorie + pratique.
+(how to level up) => voir discuter avec java angualr dev senior linkedin
+
+
+
+
+
+
+
+
+## Keycloak gettings started
+
+- create a new realm
+- create a new client:
+    - fill the form (keep data in mind)
+    - select the default flow
+    - http://localhost:8081 => origin, root, home, ...
+- create a role:
+- create a user
+    - fill the form + set a password
+    - set a role to each user
+
+get all realm settings:
+`http://localhost:8180/realms/my-realm-master/.well-known/`
+
+- to get a token response:
+    - call this url => `http://localhost:8180/realms/my-realm/protocol/openid-connect/token`
+    - fill with form-encoded `grant_type=password&username=sam&client_id=my-realm-master&password=password`
+
+- export data from a keycloak (all data related to a realm)
+    - connec to keycloak container
+    - go to `/opt/keycloak/bin`
+    - execute this `kc.sh export --optimized --file=fs-java-angular-app --realm=my-realm` (specify file name, the realm to export)
+
+kc.sh export --optimized --file=fs-java-angular-app --realm=my-realm
+
+** config openid:**
+http://localhost:8180/realms/master/.well-known/openid-configuration => master realm
+http://localhost:8180/realms/my-realm/.well-known/openid-configuration => my realm	
+http://localhost:8180/realms/my-realm/protocol/openid-connect/token => my realm	
+
+** getting started: **
+- go to http://localhost:8180
+- connect to master realm
+- then connect/create to another realm
+
+
+** configuration keycloak: **
+- create a new realm,
+- create a new client, (app ex: angular)
+- create a new role,
+- create a new user + assign a role

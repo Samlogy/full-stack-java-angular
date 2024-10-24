@@ -1,6 +1,7 @@
 server:
   port: 8081
 
+
 app:
   name: ecommerce_api
   version: 1.0.0
@@ -31,6 +32,12 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/my-realm
+
   flyway:
     baselineOnMigrate:  true
     enabled: true
@@ -38,7 +45,7 @@ spring:
     baseline-on-migrate: true
 
   profiles:
-    active: prod
+    active: int
 
 javamelody:
   enabled: true
@@ -46,3 +53,9 @@ javamelody:
   spring-monitoring-enabled: true
   init-parameters:
     log: false
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE

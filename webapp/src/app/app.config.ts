@@ -9,12 +9,23 @@ import {
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+// export const authCodeFlowConfig: AuthConfig = {
+//   issuer: 'http://localhost:8180/realms/my-test-realm',
+//   tokenEndpoint:
+//     'http://localhost:8180/realms/my-test-realm/protocol/openid-connect/token',
+//   redirectUri: window.location.origin,
+//   clientId: 'my-webapp-client',
+//   responseType: 'code',
+//   scope: 'openid profile',
+//   showDebugInformation: true,
+// };
+
 export const authCodeFlowConfig: AuthConfig = {
-  issuer: 'http://localhost:8180/realms/my-test-realm',
+  issuer: 'http://localhost:8180/realms/my-realm',
   tokenEndpoint:
-    'http://localhost:8180/realms/my-test-realm/protocol/openid-connect/token',
+    'http://localhost:8180/realms/my-realm/protocol/openid-connect/token',
   redirectUri: window.location.origin,
-  clientId: 'my-webapp-client',
+  clientId: 'my-realm-front',
   responseType: 'code',
   scope: 'openid profile',
   showDebugInformation: true,
@@ -37,9 +48,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_INITIALIZER,
       useFactory: (oauthService: OAuthService) => {
-        return () => {
-          initializeOAuth(oauthService);
-        };
+        return () => initializeOAuth(oauthService)
       },
       multi: true,
       deps: [OAuthService],
