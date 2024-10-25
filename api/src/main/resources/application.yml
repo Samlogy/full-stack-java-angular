@@ -59,3 +59,10 @@ logging:
     org:
       springframework:
         security: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus

@@ -224,7 +224,12 @@ For testing purposes ELK ():
 * fix jenkins bug on pipeline CI
 * add jenkins pipeline CD
 
+* finir monitoring => prometheus & grafana 
+
 * fix spring app dockerized version
+
+* add logging => ELK
+
 
 * infra => terraform, ansible, kube (do it nodejs) => aws / gcp ?
 
