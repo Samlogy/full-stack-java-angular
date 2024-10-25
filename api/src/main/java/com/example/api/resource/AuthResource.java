@@ -12,19 +12,19 @@ import java.text.MessageFormat;
 
 
 @RestController
-@CrossOrigin(
+/*@CrossOrigin(
         origins = "http://localhost:4200",
         allowedHeaders = "*",
         methods = { RequestMethod.GET }
-)
+)*/
 public class AuthController {
     @GetMapping("/hello-regular")
     @PreAuthorize("hasAuthority('regular')")
     public Message hello_regular() {
         var jwt = (CustomJwt) SecurityContextHolder.getContext().getAuthentication();
         var message = MessageFormat
-                .format("Hello User {0} {1}, how is it going today?",
-                        jwt.getFirstname(), jwt.getLastname());
+                .format("Hello {0} {1} {2}, Regular",
+                        jwt.getFirstname(), jwt.getLastname(), jwt.getEmail());
         return new Message(message);
     }
 
@@ -33,8 +33,8 @@ public class AuthController {
     public Message hello_admin() {
         var jwt = (CustomJwt) SecurityContextHolder.getContext().getAuthentication();
         var message = MessageFormat
-                .format("Hello User {0} {1}, how is it going today?",
-                        jwt.getFirstname(), jwt.getLastname());
+                .format("Hello {0} {1} {2} Admin",
+                        jwt.getFirstname(), jwt.getLastname(), jwt.getEmail());
         return new Message(message);
     }
 
@@ -43,8 +43,8 @@ public class AuthController {
     public Message hello_both() {
         var jwt = (CustomJwt) SecurityContextHolder.getContext().getAuthentication();
         var message = MessageFormat
-                .format("Hello User {0} {1}, how is it going today?",
-                        jwt.getFirstname(), jwt.getLastname());
+                .format("Hello {0} {1} {2}  Both",
+                        jwt.getFirstname(), jwt.getLastname(), jwt.getEmail());
         return new Message(message);
     }
 

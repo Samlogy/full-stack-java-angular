@@ -9,11 +9,19 @@ import java.util.Collection;
 public class CustomJwt extends JwtAuthenticationToken {
 
     private String firstname;
-
     private String lastname;
+    private String email;
 
     public CustomJwt(Jwt jwt, Collection<? extends GrantedAuthority> authorities) {
         super(jwt, authorities);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstname() {

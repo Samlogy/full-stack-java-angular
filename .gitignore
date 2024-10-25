@@ -2,6 +2,10 @@ volumes
 
 webapp/node_modules
 
+data/*
+volumes/*
+
+
 
 
 

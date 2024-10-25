@@ -55,10 +55,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "webapp:build:production"
+              "buildTarget": "webapp:build:production",
+              "port": 4202
             },
             "development": {
-              "buildTarget": "webapp:build:development"
+              "buildTarget": "webapp:build:development",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"

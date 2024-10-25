@@ -21,6 +21,7 @@ public class CustomJwtConverter implements Converter<Jwt, CustomJwt> {
         var customJwt = new CustomJwt(jwt, authorities);
         customJwt.setFirstname(jwt.getClaimAsString("given_name"));
         customJwt.setLastname(jwt.getClaimAsString("family_name"));
+        customJwt.setEmail(jwt.getClaimAsString("email"));
         return customJwt;
     }
 
